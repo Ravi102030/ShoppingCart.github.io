@@ -1,0 +1,123 @@
+<!-- ------------------------------------Nav Section---------------------------------------------------- -->
+<div class="nav-container container d-flex">
+    <img class="corner-img" src="../../../assets/images/corner-img.svg" alt="">
+    <div class="bg-info"><a href="/home"><img class="logo-img" src="../../../assets/images/logo.svg" alt="Logo-Image"></a></div>
+    <div class="logo-text">Logoipsum</div>
+    <button class="btn btn-dark ml-auto" (click)="openTypePage('product')">Go To Product Listing Page</button>
+</div>
+
+<div id="head-text" class="container my-4">
+    <h1 class="signIn-text">Add Product</h1>
+</div>
+<div class="container">
+    <div class="row">
+<!-- --------------------------------------------------------Product Form-------------------------------------------------- -->
+        <form class="form-container" [formGroup]="adminForm" (ngSubmit)="onSubmit()">
+          <div class="d-flex flex-row">
+            <div class="lab"><label for="name">Name</label></div>
+            <div class="lab"><label for="gender">Gender</label></div>
+          </div>
+            <div class="form-group d-flex">
+                <input type="text" placeholder="" class="form-input" formControlName="name" [ngClass]="{ 'is-invalid': adminFormControls['name'].invalid && adminFormControls['name'].touched }" />
+                <select name="" id="" class="form-select" formControlName="gender">
+                    <option value="" disabled></option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                </select>
+            </div>
+            <div class="valid-box d-flex">
+              <div class="name-valid-box">
+                <span *ngIf="adminFormControls['name'].touched && adminFormControls['name'].getError('required')" class="errormessage">product name is requierd.</span>
+                <span *ngIf="adminFormControls['name'].touched && adminFormControls['name'].getError('minlength')" class="errormessage">Name should be at least 3 letters.</span>
+              </div>
+
+              <div class="gender-valid-box">
+              <!-- <span *ngIf="adminFormControls['gender'].getError('required')!=null" class="errormessage">gender is requierd.</span> -->
+                <span *ngIf="adminFormControls['gender'].touched && adminFormControls['gender'].getError('required')" class="errormessage">Gender is required.</span>
+              </div>
+            </div>
+
+            <div class="d-flex flex-row">
+              <div class="lab"><label for="price">Price</label></div>
+              <div class="lab"><label for="currency">Currency</label></div>
+            </div>
+            <div class="form-group d-flex">
+                <input type="number" placeholder="" class="form-input"  formControlName="price"/>
+                <select name="" id="" class="form-select" formControlName="currency">
+                  <!-- <option value="" disabled></option> -->
+                  <option value="USD">USD</option>
+                  <option value="INR">INR</option>
+                  <option value="POUND">POUND</option>
+                  <option value="EURO">EURO</option>
+
+              </select>
+            </div>
+
+            <div class="valid-box d-flex">
+              <div class="name-valid-box">
+                <!-- <span *ngIf="adminFormControls['price'].getError('required')!=null" class="errormessage">Price is requierd.</span> -->
+                <span *ngIf="adminFormControls['price'].touched && adminFormControls['price'].getError('required')" class="errormessage">Price is required.</span>
+              </div>
+
+              <div class="gender-valid-box">
+                <!-- <span *ngIf="adminFormControls['currency'].getError('required')!=null" class="errormessage">select the currency.</span> -->
+                <span *ngIf="adminFormControls['currency'].touched && adminFormControls['currency'].getError('required')" class="errormessage">Select the currency.</span>
+              </div>
+            </div>
+            
+            <div class="d-flex flex-row">
+              <div class="lab"><label for="color">Select Color</label></div>
+              <div class="lab"><label for="number">Quantity</label></div>
+            </div>
+            <div class="form-group d-flex">
+              <select name="" id="" class="form-select" formControlName="color">
+                    <option value="" disabled></option>
+                    <option value="red">Red</option>
+                    <option value="blue">Blue</option>
+                    <option value="green">Green</option>
+                </select>
+                <input type="number" placeholder="" class="form-input" formControlName="quantity"/>
+            </div>
+
+            <div class="valid-box d-flex">
+              <div class="name-valid-box">
+                <!-- <span *ngIf="adminFormControls['color'].getError('required')!=null" class="errormessage">color is requierd.</span> -->
+                <span *ngIf="adminFormControls['color'].touched && adminFormControls['color'].getError('required')" class="errormessage">Color is required.</span>
+              </div>
+
+              <div class="gender-valid-box">
+                <!-- <span *ngIf="adminFormControls['quantity'].getError('required')!=null" class="errormessage">quantity is requierd.</span> -->
+                <span *ngIf="adminFormControls['quantity'].touched && adminFormControls['quantity'].getError('required')" class="errormessage">Quantity is required.</span>
+              </div>
+            </div>
+            
+            <div class="form-group">
+                <input type="file" name="image" id="image" class="form-file" placeholder="Upload Image" formControlName="image" accept="image/"/>
+                <!-- <input type="file" name="image" id="image" class="form-file" placeholder="Upload Image" (change)="onImageSelected($event)" formControlName="image" /> -->
+            </div>
+
+            <div class="valid-box d-flex">
+              <div class="valid-box">
+                <span *ngIf=" !isUpdate && adminFormControls['image'].getError('required')!=null && adminFormControls['image'].touched" class="errormessage">image is requierd.</span>
+                <!-- <span *ngIf="adminFormControls['image'].touched && adminFormControls['image'].getError('required')" class="errormessage">Image is required.</span> -->   
+              </div>
+            </div>
+
+            <div class="form-group">
+                <button class="btn btn-secondary" (click)="onReset($event)">Reset</button>
+                <button class="btn btn-dark" >Save</button>
+            </div>
+        </form>
+    </div>
+    <div>
+        <img class="side-img" src="../../../assets/images/side-img.svg" alt="">
+    </div>
+</div>
+<!-- ------------------------------------------Footer Section---------------------------------------------------- -->
+<div class="container container-footer">
+    <div><span>2022 &copy; copyright</span></div>
+    <div><a href="/home"><img class="footer-img" src="../../../assets/images/logo.svg" alt="Logo-Image"></a></div>
+    <div><span>privacy policy. terms & condition</span></div>
+</div>
+
+

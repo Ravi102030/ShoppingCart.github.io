@@ -1,0 +1,82 @@
+<!-- *************************************Navigation Section******************************** -->
+<div class="nav-container d-flex bg-dark">
+    <img class="corner-img" src="../../../assets/images/corner-img.svg" alt="">
+    <div class="logo-container"><a href="/home"><img class="logo-img" src="../../../assets/images/logo.svg"
+                alt="Logo-Image"></a></div>
+    <div class="logo-text">Logoipsum</div>
+</div>
+
+<!-- ***************************************Product Cart Section******************* -->
+<div class="main-container">
+    <div class="left-div">
+        <table class="table text-center">
+            <thead class="table-secondary">
+                <tr>
+                    <th></th>
+                    <th></th>
+                    <th>PRODUCT</th>
+                    <th>PRICE</th>
+                    <th>QUANTITY</th>
+                    <th>TOTAL</th>
+                </tr>
+            </thead>
+            <tbody *ngIf="productList?.length" >
+                <ng-container *ngFor="let product of productList; index as ind"> 
+                        <tr *ngIf="product?.isProductPurchased">
+                            <td (click)="onRemoveProduct(ind)"><i class="fa fa-times" aria-hidden="true" ></i></td>
+                            <td>
+                                <div class="td-img">
+                                    <img class="list-img" [src]="actualimgPath + product.fileName">
+                                </div>
+                            </td>
+                            <td>{{product.name}}</td>
+                            <td class="amt">{{product.currency | currencyPipe}} {{product.price}}</td>
+                            <td>
+                                <div class="quantity">
+                                    <div class="decrease-btn" (click)="onMinus(ind)">-</div>
+                                    <div class="quantity-number">{{product?.selectedQunatity}}</div>
+                                    <div class="increase-btn" (click)="onAdd(ind)">+</div>
+                                </div>
+                            </td>
+                            <td class="amt">{{'₹'}} {{product.totalPrice}}</td>
+                        </tr>
+             </ng-container>
+            </tbody>
+        </table>
+        <div *ngIf="!productList?.length || isEmptyCart">
+            <div class="d-flex justify-content-center align-items-center w-100" style="font-size: 18px;">No Item Found !!!!</div>
+        </div>      
+    </div>
+    <div class="right-div">
+        <div class="cart-head">CART TOTAL</div>
+        <div class="sub-text">
+            <div class="inner-content">Sub Total</div>
+            <div class="inner-content amt">{{totalPrice}}</div>
+        </div>
+        <div class="tot-text">
+            <div class="inner-content">Total</div>
+            <div class="inner-content amt">{{totalPrice}}</div>
+        </div>
+        <div class="checkout-btn" >
+            <button class="btnn" (click)="onProceed()" [disabled]="isEmptyCart">PROCEED TO CHECKOUT</button>
+        </div>
+    </div>
+</div>
+<!-- ----------------------------------Footer Section----------------------------------- -->
+<div class="container container-footer">
+    <div><span>2022 &copy; copyright</span></div>
+    <div><a href="/home"><img class="footer-img" src="../../../assets/images/logo.svg" alt="Logo-Image"></a></div>
+    <div><span>privacy policy. terms & condition</span></div>
+</div>
+
+<!-- --------------------------------------Successfull Modal Box------------------------- -->
+<ng-template #successTemplate>
+    <div style="height: 300px;" class="d-flex align-items-center justify-content-center flex-column">
+        <div class="my-1">
+            <span class="text-center"> successfully purchased</span>
+        </div>
+        <div class="">
+            <button class="btn btn-lg btn-success" (click)="onClose()">OK</button>
+        </div>
+    </div>
+</ng-template>

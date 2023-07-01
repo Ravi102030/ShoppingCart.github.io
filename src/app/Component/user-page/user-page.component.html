@@ -1,0 +1,68 @@
+<!-- *************************************Navigation Section******************************** -->
+<div class="nav-container container d-flex bg-dark">
+    <img class="corner-img" src="../../../assets/images/corner-img.svg" alt="">
+    <div class="logo-container"><a href="/home"><img class="logo-img" src="../../../assets/images/logo.svg"
+                alt="Logo-Image"></a></div>
+    <div class="logo-text">Logoipsum</div>
+
+    <div class="search-bar-container">
+        <input type="text" class="form-control search-input" placeholder="Search" #searchKey [ngModel]="searchElement" (ngModelChange)="onKeyUp($event)"  (keypress)="onSearch($event)">
+        <button class="btn btn-danger search-button">
+            <i class="fa fa-search" aria-hidden="true"></i>
+        </button>
+    </div>
+</div>
+<!-- **************************************Cart Button*************************************** -->
+<div class="container mt-2">
+    <div class="cart-button-container mx-2">
+        <button class="btn btn-dark cart-button" (click)="openTypePage('cart')">
+            <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+            Go To Cart
+        </button>
+    </div>
+</div>
+<!-- ***************************************Products Section****************************** -->
+<div class="container outer-container">
+    <div class="grid-container" *ngIf="searchResult">
+     <ng-container *ngIf="productList?.length">
+        <div class="grid-item cart-item" *ngFor="let product of productList; index as ind" [hidden]="product.isHidden">
+        <!-- <div class="grid-item cart-item" *ngFor="let product of productList; index as ind"> -->
+            <div class="img-container">
+                <!-- <img src="../../../assets/images/product1.svg" alt=""> -->
+                <img class="list-img" [src]="actualimgPath + product.fileName">
+            </div>
+            <div class="d-flex flex-column align-items-start item-details">
+                <div><p class="item-head">{{product?.name}}</p></div>
+                <div><p class="item-price">{{product.currency | currencyPipe}} {{product.price}}</p></div>
+                <div>
+                    <ul>
+                        <li>For<span class="item-gender">{{product?.gender}}</span></li>
+                        <li>Available Qty:<span class="item-type">{{product.quantity}}</span></li>
+                        <li>Color:<span class="item-type">{{product.color}}</span></li>
+                    </ul>
+                </div>
+                <div class="btn-box" *ngIf="(!product.isQunatityEnable && !product.isTemporary) || product.quantity === 0">
+                    <button class="btn btn-success cart-btn" (click)="onAddCart(ind)" [disabled]="product.quantity === 0">ADD TO CART</button>
+                    <div *ngIf="product.quantity === 0" class="text-danger"><span>Out of stock</span></div>
+                </div>
+                <div class="btn-box-add" *ngIf="product.isQunatityEnable || product.isTemporary">
+                    <button class="minus-btn secondary-btn" (click)="onMinus(ind , $event)">-</button>
+                    <span>{{product?.selectedQunatity}}</span>
+                    <button class="plus-btn secondary-btn" (click)="onAdd(ind)">+</button>
+                </div>
+            </div>
+        </div>
+     </ng-container>
+    </div>
+    <div class="d-flex flex-column justify-content-center align-items-center" style="width: 100%; height: 400px;" *ngIf="!searchResult">
+       <div> No result Found !!!</div>
+       <div>Try with different keyword....</div> 
+    </div>
+</div>
+<!-- ----------------------------------Footer Section---------------------------- -->
+<div class="container container-footer">
+    <div><span>2022 &copy; copyright</span></div>
+    <div><a href="/home"><img class="footer-img" src="../../../assets/images/logo.svg" alt="Logo-Image"></a></div>
+    <div><span>privacy policy. terms & condition</span></div>
+</div>
+

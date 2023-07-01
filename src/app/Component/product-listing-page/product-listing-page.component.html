@@ -1,0 +1,61 @@
+<!-- ------------------------------------Navigation Bar--------------------------------- -->
+<div class="nav-container container d-flex">
+    <img class="corner-img" src="../../../assets/images/corner-img.svg" alt="">
+    <div class="bg-info"><a href="/home"><img class="logo-img" src="../../../assets/images/logo.svg" alt="Logo-Image"></a></div>
+    <div class="logo-text">Logoipsum</div>
+
+    <button class="btn btn-dark ml-auto" data-toggle="modal" data-target=".bd-example-modal-sm" (click)="redirectToUser()">Add Product</button>
+</div>
+<!-- -----------------------------------------Product List Section---------------------- -->
+<div class="container">
+    <table class="table text-center">
+        <thead class="table-danger ">
+            <tr class="">
+                <th>S.no.</th>
+                <th>Name
+                    <i class="fa fa-arrow-down" aria-hidden="true" (click)="sortByName()"></i>
+                </th>
+                <th>Gender</th>
+                <th>Price
+                    <i class="fa fa-arrow-down" aria-hidden="true" (click)="sortByPrice()"></i>
+                </th>
+                <th>Currency</th>
+                <th>Quantity
+                    <i class="fa fa-arrow-down" aria-hidden="true" (click)="sortByQuantity()"></i>
+                </th>
+                <th>Image</th>
+                <th>Color
+                    <i class="fa fa-arrow-down" aria-hidden="true" (click)="sortByColor()"></i>
+                </th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <ng-container *ngIf="productList?.length">
+                <tr *ngFor="let product of productList; index as ind">
+                    <td>{{ind + 1}}</td>
+                    <td>{{product.name}}</td>
+                    <td>{{product.gender}}</td>
+                    <td>{{product.price}}</td>
+                    <td>{{product.currency}}</td>
+                    <td>{{product.quantity}}</td>
+                    <td><img class="list-img" [src]="actualimgPath + product.fileName"></td>
+                    <!-- <td><img [src]="this.actualimgPath+this.imageName" ></td> -->
+                    <td>{{product.color}}</td>
+                    <td>
+                      <div class='d-flex justify-content-around align-items-center'>
+                        <div class="bg-info edi-icon d-flex justify-content-center align-items-center" (click)="onEdit(ind)"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></div>
+                        <div class="bg-danger del-icon d-flex justify-content-center align-items-center" (click)="onDelete(ind)"><i class="fa fa-trash-o" aria-hidden="true"></i></div>
+                      </div>
+                    </td>
+                </tr>
+            </ng-container>
+        </tbody>
+    </table>
+</div>
+<!-- ----------------------------------Footer Section---------------------------- -->
+<div class="container container-footer">
+    <div><span>2022 &copy; copyright</span></div>
+    <div><a href="/home"><img class="footer-img" src="../../../assets/images/logo.svg" alt="Logo-Image"></a></div>
+    <div><span>privacy policy. terms & condition</span></div>
+</div>

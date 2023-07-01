@@ -1,0 +1,139 @@
+.nav-container {
+    position: relative;
+    padding: 8px;
+    margin-bottom: 50px;
+    max-width: 1150;
+}
+.corner-img {
+    height: 100px;
+    width: 100px;
+    position: absolute;
+    top: 50px;
+    left: -1px;
+}
+.logo-img {
+    height: 30px;
+    width: 30px; 
+    margin-left: 10px;
+
+}
+
+.logo-text {
+    font-weight: 700;
+    margin-left: 12px;
+    margin-top: 2px;
+    /* position: absolute; */
+    left: 70px;
+    top: 26px;
+    color: #fff;
+}
+/* *************Cart Seaction************ */
+.main-container{
+    display: flex;
+    max-width: 1000px;
+    margin: 0px auto;
+    justify-content: space-between;
+}
+.left-div{
+    width: 65%;
+}
+.right-div{
+    width: 30%;
+    text-align: left;
+}
+.cart-head{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid gray;
+    padding: 8px;
+    font-size: 15px;
+    font-weight: 700;
+    color: gray;
+    background-color: rgb(224, 227, 230);
+}
+.sub-text,.tot-text{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    align-items: center;
+    border-top: 1px solid gray;
+}
+.inner-content{
+    width: 50%;
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+    font-weight: 500;
+    padding: 8px;
+
+}
+.checkout-btn{
+    width: 100%;
+}
+.btnn{
+    width: 100%;
+    background-color: skyblue;
+    border: none;
+    color: #fff;
+    font-size: 9px;
+    font-weight: 700;
+    height: 40px;
+    border-radius: 2px;
+}
+.btnn:hover{
+    background-color: rgb(51, 188, 241);
+}
+.btnn:disabled{
+    background-color: #777777;
+}
+.container-footer {
+    border-top: 1px solid gray;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 10px;
+    font-weight: 500;
+    padding: 5px;
+    margin-top: 290px;
+}
+
+.footer-img {
+    height: 30px;
+    width: 30px;
+}
+.quantity{
+    display: flex!important;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: space-evenly;
+    height: 30px;
+}
+.decrease-btn, .quantity-number, .increase-btn{
+    border: 1px solid lightgray;
+    width: 33.9%;
+    cursor: pointer;
+
+}
+.amt{
+    color: rgb(104, 156, 27);
+}
+.td-img{
+    height: 30px;
+    width: 30px;
+}
+.td-img img{
+    height: 30px;
+    width: 30px;
+}
+.priority{
+    z-index: 10000;
+}

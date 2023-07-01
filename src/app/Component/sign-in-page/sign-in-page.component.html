@@ -1,0 +1,38 @@
+<!-- --------------------------------Navigation Bar------------------------------------- -->
+<div class="nav-container container d-flex">
+    <img class="corner-img" src="../../../assets/images/corner-img.svg" alt="">
+    <div class="bg-info"><a href="/home"><img class="logo-img" src="../../../assets/images/logo.svg" alt="Logo-Image"></a>
+    </div>
+    <div class="logo-text">Logoipsum</div>
+</div>
+<!-- ----------------------------------Content Section--------------------------------- -->
+<div id="head-text" class="container my-5">
+    <h1 class="signIn-text">Sign-in as</h1>
+</div>
+<div class="container d-flex">
+    <div class="row d-flex flex-column ">
+        <div class="select-box" (click)="openTypePage('admin')">
+            <div>
+                <img class="admin-icon" src="../../../assets/images/admin.svg" alt="User Icon">
+                <span class="username">Admin</span>
+            </div>
+            <input class="input-box1" type="radio" id="admin-radio" name="admin-type" value="admin">
+        </div>
+        <div class="select-box" (click)="openTypePage('user')">
+            <div>
+                <img class="user-icon" src="../../../assets/images/user.svg" alt="User Icon">
+                <span class="username">User</span>
+            </div>
+            <input class="input-box2" type="radio" id="user-radio" name="admin-type" value="user">
+        </div>
+    </div>
+    <div>
+        <img class="side-img" src="../../../assets/images/side-img.svg" alt="">
+    </div>
+</div>
+<!-- ---------------------------------------Footer Secction----------------------------------- -->
+<div class="container container-footer">
+    <div><span>2022 &copy; copyright</span></div>
+    <div><a href="/home"><img class="footer-img" src="../../../assets/images/logo.svg" alt="Logo-Image"></a></div>
+    <div><span>privacy policy. terms & condition</span></div>
+</div>
